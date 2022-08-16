@@ -14,13 +14,17 @@
   "engines": {
     "node": ">=14.17.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@uiw/react-codemirror": "^4.11.4",
+    "electron-acrylic-window": "^0.5.11"
+  },
   "devDependencies": {
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.0.0",
     "electron": "^19.0.9",
     "electron-builder": "^23.1.0",
+    "electron-reloader": "^1.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.53.0",

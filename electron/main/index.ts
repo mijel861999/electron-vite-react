@@ -1,4 +1,5 @@
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, shell, ipcMain } from 'electron'
+import { BrowserWindow } from 'electron-acrylic-window'
 import { release } from 'os'
 import { join } from 'path'
 
@@ -29,10 +30,16 @@ const preload = join(__dirname, '../preload/index.js')
 const url = `http://${process.env['VITE_DEV_SERVER_HOST']}:${process.env['VITE_DEV_SERVER_PORT']}`
 const indexHtml = join(ROOT_PATH.dist, 'index.html')
 
+require('electron-reloader')(module)
+
 async function createWindow() {
   win = new BrowserWindow({
     title: 'Main window',
     icon: join(ROOT_PATH.public, 'favicon.svg'),
+    width: 900,
+		height: 700,
+		frame: false,
+		vibrancy: 'dark',
     webPreferences: {
       preload,
       nodeIntegration: true,
@@ -57,6 +64,8 @@ async function createWindow() {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
+
+  win.webContents.openDevTools()
 }
 
 app.whenReady().then(createWindow)
