@@ -15,6 +15,9 @@
     "node": ">=14.17.0"
   },
   "dependencies": {
+    "@lezer/highlight": "^1.0.0",
+    "@uiw/codemirror-theme-okaidia": "^4.11.4",
+    "@uiw/codemirror-themes": "^4.11.4",
     "@uiw/react-codemirror": "^4.11.4",
     "electron-acrylic-window": "^0.5.11"
   },
