@@ -1,6 +1,4 @@
-import electron from '/electron.png'
-import react from '/react.svg'
-import vite from '/vite.svg'
+import React from 'react'
 import styles from 'styles/app.module.scss'
 import CodeMirror from '@uiw/react-codemirror'
 import { createTheme } from '@uiw/codemirror-themes'
@@ -16,7 +14,7 @@ const myTheme = createTheme({
     selectionMatch: '#B1B1B1',
     lineHighlight: 'transparent',
     gutterBackground: 'transparent',
-    gutterForeground: '#B1B1B1',
+    gutterForeground: 'transparent',
   },
   styles: [
     { tag: t.comment, color: '#787b8099' },
@@ -38,17 +36,26 @@ const myTheme = createTheme({
 
 
 const App: React.FC = () => {
+  const onChange = React.useCallback((value, viewUpdate) => {
+    console.log('value', value)
+  }, [])
+
   const code = "holaaa"
 
   return (
       <CodeMirror
         width='100%'
         height='100%'
-        value={code}
         options={{
           mode: 'jsx'
         }}
         theme={ myTheme }
+        basicSetup={{
+          lineNumbers: false,
+          highlightActiveLine: false,
+          foldGutter: false
+        }}
+        onChange={ onChange }
       />
   )
 }
